@@ -1,9 +1,67 @@
-[gd_scene format=3 uid="uid://ckt42i612dyj4"]
+[gd_scene load_steps=9 format=3 uid="uid://ckt42i612dyj4"]
+
+[ext_resource type="Script" path="res://Movement.gd" id="1_atu4m"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_grmyn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2gsr1"]
+radius = 0.591591
+
+[sub_resource type="Environment" id="Environment_qfcej"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4ueba"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7alto"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8a3b7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a062t"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999973, 0.00734121, -6.70395e-10, 0.00352162, -0.479693, 0.877429, 0.0064414, -0.877406, -0.479706, 0, 9.18317, -6.62734)
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.71181)
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01388, 0.0235162, -0.0115159)
+script = ExtResource("1_atu4m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.950016, 0)
+mesh = SubResource("CapsuleMesh_grmyn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.970664, 0)
+shape = SubResource("CapsuleShape3D_2gsr1")
+
+[node name="Neck" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.970664, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.577856, -0.334844)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="StaticBody3D"]
+environment = SubResource("Environment_qfcej")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(13.462, 0, 0, 0, 1.0042, 0, 0, 0, 13.699, 0, 0, 0)
+mesh = SubResource("PlaneMesh_4ueba")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_7alto")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="StepTest" type="StaticBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664551, -6.62225)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/StepTest"]
+transform = Transform3D(12.3617, 0, 0, 0, 1, 0, 0, 0, 1.6956, 0, -0.446446, -0.00509453)
+mesh = SubResource("BoxMesh_8a3b7")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StepTest"]
+transform = Transform3D(12.3617, 0, 0, 0, 1, 0, 0, 0, 1.6956, 0, -0.417161, 0.0197425)
+shape = SubResource("BoxShape3D_a062t")
