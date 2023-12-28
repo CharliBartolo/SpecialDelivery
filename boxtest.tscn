@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckt42i612dyj4"]
+[gd_scene load_steps=20 format=3 uid="uid://ckt42i612dyj4"]
 
 [ext_resource type="Script" path="res://Movement.gd" id="1_atu4m"]
+[ext_resource type="Script" path="res://DetectCollision.gd" id="2_gh75s"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_grmyn"]
 
@@ -48,7 +49,7 @@ albedo_color = Color(1, 0.0705882, 0, 1)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999973, 0.00734122, 1.43486e-08, -0.0072967, 0.993909, 0.109963, 0.000807249, -0.10996, 0.993936, 0, 9.18317, -6.62734)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01388, 0.0235162, -0.0115159)
 script = ExtResource("1_atu4m")
 
@@ -170,13 +171,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_eo16k")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Podiums5"]
 shape = SubResource("BoxShape3D_dccr3")
 
-[node name="Step3" type="StaticBody3D" parent="Environment"]
+[node name="Ledge1" type="Area3D" parent="Environment"]
 transform = Transform3D(1.1875, 0, 0, 0, 0.772284, 0, 0, 0, 1.36306, 0.172274, 3.28036, -5.82739)
+script = ExtResource("2_gh75s")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Step3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ledge1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_dccr3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ledge1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.949323, 0, 0, 0)
 mesh = SubResource("BoxMesh_2fxi6")
+skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_eo16k")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Step3"]
-shape = SubResource("BoxShape3D_dccr3")
+[connection signal="body_entered" from="Environment/Ledge1" to="Environment/Ledge1" method="_on_body_entered"]
+[connection signal="body_exited" from="Environment/Ledge1" to="Environment/Ledge1" method="_on_body_exited"]
