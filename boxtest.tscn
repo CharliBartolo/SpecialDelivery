@@ -176,7 +176,6 @@ transform = Transform3D(1.1875, 0, 0, 0, 0.772284, 0, 0, 0, 1.36306, 0.172274, 3
 script = ExtResource("2_gh75s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ledge1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_dccr3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Ledge1"]

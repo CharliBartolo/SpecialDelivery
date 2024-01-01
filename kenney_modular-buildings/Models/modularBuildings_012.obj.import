@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://daammupww1s8l"
+path="res://.godot/imported/modularBuildings_012.obj-add35ecba437701373f0f65059db6297.mesh"
+
+[deps]
+
+files=["res://.godot/imported/modularBuildings_012.obj-add35ecba437701373f0f65059db6297.mesh"]
+
+source_file="res://kenney_modular-buildings/Models/modularBuildings_012.obj"
+dest_files=["res://.godot/imported/modularBuildings_012.obj-add35ecba437701373f0f65059db6297.mesh", "res://.godot/imported/modularBuildings_012.obj-add35ecba437701373f0f65059db6297.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
