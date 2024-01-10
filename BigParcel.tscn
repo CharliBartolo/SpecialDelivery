@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwpu5f8oo3gnu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vbjw"]
+albedo_color = Color(0.603922, 0.486275, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2tt4u"]
+material = SubResource("StandardMaterial3D_7vbjw")
+
+[node name="LetterItem" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0867, 0, 0, 0, 0.364828, 0, 0, 0, 1.12745, 0, 0, 0)
+mesh = SubResource("BoxMesh_2tt4u")

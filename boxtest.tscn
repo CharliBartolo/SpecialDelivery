@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckt42i612dyj4"]
+[gd_scene load_steps=21 format=3 uid="uid://ckt42i612dyj4"]
 
 [ext_resource type="Script" path="res://Movement.gd" id="1_atu4m"]
+[ext_resource type="Script" path="res://InstantiateParcel.gd" id="1_oqrhx"]
 [ext_resource type="Script" path="res://DetectCollision.gd" id="2_gh75s"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_grmyn"]
@@ -44,7 +45,8 @@ albedo_color = Color(0.482353, 0.984314, 0.964706, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7i8ml"]
 albedo_color = Color(1, 0.0705882, 0, 1)
 
-[node name="Node3D" type="Node3D"]
+[node name="Main" type="Node3D"]
+script = ExtResource("1_oqrhx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999973, 0.00734122, 1.43486e-08, -0.0072967, 0.993909, 0.109963, 0.000807249, -0.10996, 0.993936, 0, 9.18317, -6.62734)
@@ -131,7 +133,6 @@ transform = Transform3D(1.41016, 0, 0, 0, 1.59867, 0, 0, 0, 1.85793, 4.00186, 0.
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Podiums2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.949323, 0, 0, 0)
 mesh = SubResource("BoxMesh_2fxi6")
-skeleton = NodePath("../../Podiums2")
 surface_material_override/0 = SubResource("StandardMaterial3D_cd5po")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Podiums2"]
